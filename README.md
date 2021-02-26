@@ -25,7 +25,7 @@ In order to begin utilizing Instnt Angular SDK, enter the following command to i
 ```sh
 npm i @instnt/instnt-angular-js
 ```
-This process should only take a few moments. Once complete, import Instnt's Angular Workflow component in your module:
+This process should only take a few moments. Once complete, import Instnt's Angular Workflow component in your application module:
 
 ```jsx
 import { InstntSignupModule } from '@instnt/instnt-angular-js';
@@ -65,22 +65,10 @@ Once the application has loaded, a fully rendered workflow will appear including
 
 # Rendering a Custom Signup Workflow with Instnt Angular SDK
 
-If you'd like to integrate Instnt's back-end functionality with your company's UI, import the [InstntSignUpModule](https://github.com/instnt-inc/instnt-angular-js/blob/master/examples/standard-form/src/app/app.module.ts#L5) using the following lines of code:
+If you'd like to integrate Instnt's back-end functionality with your company's UI, import the [InstntSignUpModule](https://github.com/instnt-inc/instnt-angular-js/blob/master/examples/standard-form/src/app/app.module.ts#L5) in your application's module component using the following line of code:
 
 ```jsx
 import { InstntSignupModule } from '@instnt/instnt-angular-js';
-
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    InstntSignupModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
 ```
 
 The import command imports Instnt's Custom Signup workflow, which hides all of the standard workflow fields and application functionality when rendered, allowing for the addition of new workflow fields a la carte.
