@@ -3,8 +3,8 @@
 This documentation covers the basics of Instnt Angular SDK implementation. Put simply, Angular is an open-source front-end developer library utilized by Instnt to create a more streamlined and elegant integration with your company's forms. For a more detailed look at this implementation, visit
 [Instnt's documentation library.](https://support.instnt.org/hc/en-us/articles/360055345112-Integration-Overview)
 
-[![build status](https://img.shields.io/travis/instnt/instnt-react-js/master.svg?style=flat-square)](https://travis-ci.org/instnt/instnt-react-js)
-[![npm version](https://img.shields.io/npm/v/@instnt/instnt-react-js.svg?style=flat-square)](https://www.npmjs.com/package/@instnt/instnt-react-js)
+[![build status](https://img.shields.io/travis/instnt/instnt-react-js/master.svg?style=flat-square)](https://travis-ci.org/instnt/instnt-angular-js)
+[![npm version](https://img.shields.io/npm/v/@instnt/instnt-react-js.svg?style=flat-square)](https://www.npmjs.com/package/@instnt/instnt-angular-js)
 
 ### Table of Contents
 - [Getting Started](https://github.com/instnt-inc/instnt-react-js#getting-started)
@@ -51,8 +51,8 @@ Now that the components have been installed and imported, it's time to set up th
 function App () {
   return (
       <div className= 'App'>
-        <InstntSignUp sandbox
-         formId= 'v879876100000'/>
+        <instnt-signup sandbox
+         formId= 'v879876100000'></instnt-signup>
       </div>
     )
   }
@@ -75,7 +75,7 @@ Once the application has loaded, a fully rendered workflow will appear including
 If you'd like to integrate Instnt's back-end functionality with your company's UI, import the [InstntCustomSignUp](https://github.com/instnt-inc/instnt-react-js/blob/48d6d45d7966de5fa809f5eb6e6f0fe86ccc13de/examples/forms/src/App.js#L11) workflow and set the [data object parameters](https://github.com/instnt-inc/instnt-react-js/blob/48d6d45d7966de5fa809f5eb6e6f0fe86ccc13de/examples/forms/src/App.js#L24-L26) using the following commands:
 
 ```jsx
-import { InstntCustomSignUp } from '@instnt/instnt-react-js'
+import { InstntCustomSignUp } from '@instnt/instnt-angular-js'
 
 const submitMyForm = () -> {
   window.instnt.submitCustomForm(data);
@@ -91,9 +91,9 @@ To set up the function, enter the [following command](https://github.com/instnt-
 function App () {
   return (
       <div className= 'App'>
-        <InstntCustomSignUp
+        <instnt-custom-signup
          sandbox
-         formId= 'v879876100000'/>
+         formId= 'v879876100000'></instnt-custom-signup>
       </div>
     )
   }
@@ -116,22 +116,19 @@ When submitting this data from the backend, the `instnt_token` should be collect
 ### Sandbox
 
 ```jsx
-  const submitFormViaAPI = () => {
-    // 'data' contains user data fields
+  public onSubmitFormViaAPI(): void {
+    // 'form.value' contains user data fields
     // Get system information using window.instnt.getToken() and send it along with data using 'instnt_token' key
     const token = window.instnt.getToken();
-    const dataWithToken = { ...data, instnt_token: token };
 
-    fetch('https://sandbox-api.instnt.org/public/submitformdata/v1.0'), {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(dataWithToken),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
+    this.httpClient
+      .post<any>(`https://sandbox2-api.instnt.org/public/submitformdata/v1.0`, {
+        ...this.form.value,
+        'instnt_token': token
+      }).pipe(map((response: any) => response))
+      .subscribe((response: any) => {
+        console.log(response);
+        this.apiResponse = JSON.stringify(response.data);
       });
   };
 ```
