@@ -3,17 +3,17 @@
 This documentation covers the basics of Instnt Angular SDK implementation. Put simply, Angular is an open-source front-end developer library utilized by Instnt to create a more streamlined and elegant integration with your company's forms. For a more detailed look at this implementation, visit
 [Instnt's documentation library.](https://support.instnt.org/hc/en-us/articles/360055345112-Integration-Overview)
 
-[![build status](https://img.shields.io/travis/instnt/instnt-react-js/master.svg?style=flat-square)](https://travis-ci.org/instnt/instnt-angular-js)
-[![npm version](https://img.shields.io/npm/v/@instnt/instnt-react-js.svg?style=flat-square)](https://www.npmjs.com/package/@instnt/instnt-angular-js)
+[![build status](https://img.shields.io/travis/instnt/instnt-angular-js/master.svg?style=flat-square)](https://travis-ci.org/instnt/instnt-angular-js)
+[![npm version](https://img.shields.io/npm/v/@instnt/instnt-angular-js.svg?style=flat-square)](https://www.npmjs.com/package/@instnt/instnt-angular-js)
 
 ### Table of Contents
-- [Getting Started](https://github.com/instnt-inc/instnt-react-js#getting-started)
-- [Rendering a Standard Signup Workflow with Instnt Angular SDK](https://github.com/instnt-inc/instnt-react-js#rendering-a-standard-signup-form-with-instnt-react-sdk)
-- [Rendering a Custom Signup Workflow with Instnt Angular SDK](https://github.com/instnt-inc/instnt-react-js#rendering-a-custom-signup-form-with-instnt-react-sdk)
-- [Submit Workflow to Instnt Using the JavaScript Helper Function](https://github.com/instnt-inc/instnt-react-js#submit-form-to-instnt-using-the-javascript-helper-function)
-- [Submit Workflow to Instnt via API](https://github.com/instnt-inc/instnt-react-js#submit-form-to-instnt-via-api)
-- [Instnt's Sandbox](https://github.com/instnt-inc/instnt-react-js#instnts-sandbox)
-- [FAQ](https://github.com/instnt-inc/instnt-react-js#faq)
+- [Getting Started](https://github.com/instnt-inc/instnt-angular-js#getting-started)
+- [Rendering a Standard Signup Workflow with Instnt Angular SDK](https://github.com/instnt-inc/instnt-angular-js#rendering-a-standard-signup-form-with-instnt-angular-sdk)
+- [Rendering a Custom Signup Workflow with Instnt Angular SDK](https://github.com/instnt-inc/instnt-angular-js#rendering-a-custom-signup-form-with-instnt-angular-sdk)
+- [Submit Workflow to Instnt Using the JavaScript Helper Function](https://github.com/instnt-inc/instnt-angular-js#submit-form-to-instnt-using-the-javascript-helper-function)
+- [Submit Workflow to Instnt via API](https://github.com/instnt-inc/instnt-angular-js#submit-form-to-instnt-via-api)
+- [Instnt's Sandbox](https://github.com/instnt-inc/instnt-angular-js#instnts-sandbox)
+- [FAQ](https://github.com/instnt-inc/instnt-angular-js#faq)
 
 ### Related Material
 - [Instnt API Endpoints](https://swagger.instnt.org/)
@@ -23,12 +23,12 @@ This documentation covers the basics of Instnt Angular SDK implementation. Put s
 In order to begin utilizing Instnt Angular SDK, enter the following command to install Instnt's Angular components:
 
 ```sh
-npm i @instnt/instnt-react-js
+npm i @instnt/instnt-angular-js
 ```
 This process should only take a few moments. Once complete, import Instnt's Angular Workflow component:
 
 ```jsx
-import { InstntSignUp } from '@instnt/instnt-react-js'
+import { InstntSignUp } from '@instnt/instnt-angular-js'
 ```
 InstntSignUp imports a boilerplate Instnt workflow with the following fields:
 
@@ -60,7 +60,7 @@ function App () {
 Note that a Workflow ID is required in order to properly execute this function. For more information concerning Workflow IDs, please visit
 [Instnt's documentation library.](https://support.instnt.org/hc/en-us/articles/360055345112-Integration-Overview)
 
-The `sandbox` parameter is added to connect the workflow components to Instnt's Sandbox environment. More information concerning the sandbox environment is available in this [quick start guide](https://github.com/instnt-inc/instnt-react-js#instnts-sandbox).
+The `sandbox` parameter is added to connect the workflow components to Instnt's Sandbox environment. More information concerning the sandbox environment is available in this [quick start guide](https://github.com/instnt-inc/instnt-angular-js#instnts-sandbox).
 
 With the above code complete, start the application by running the following command:
 
@@ -72,7 +72,7 @@ Once the application has loaded, a fully rendered workflow will appear including
 
 # Rendering a Custom Signup Workflow with Instnt Angular SDK
 
-If you'd like to integrate Instnt's back-end functionality with your company's UI, import the [InstntCustomSignUp](https://github.com/instnt-inc/instnt-react-js/blob/48d6d45d7966de5fa809f5eb6e6f0fe86ccc13de/examples/forms/src/App.js#L11) workflow and set the [data object parameters](https://github.com/instnt-inc/instnt-react-js/blob/48d6d45d7966de5fa809f5eb6e6f0fe86ccc13de/examples/forms/src/App.js#L24-L26) using the following commands:
+If you'd like to integrate Instnt's back-end functionality with your company's UI, import the [InstntCustomSignUp](https://github.com/instnt-inc/instnt-angular-js/blob/48d6d45d7966de5fa809f5eb6e6f0fe86ccc13de/examples/forms/src/App.js#L11) workflow and set the [data object parameters](https://github.com/instnt-inc/instnt-angular-js/blob/48d6d45d7966de5fa809f5eb6e6f0fe86ccc13de/examples/forms/src/App.js#L24-L26) using the following commands:
 
 ```jsx
 import { InstntCustomSignUp } from '@instnt/instnt-angular-js'
@@ -85,7 +85,7 @@ The import command imports Instnt's Custom Signup workflow, which hides all of t
 
 The second command takes all of the data objects referenced throughout your sign-up process via your company's own UI and passes them through the InstntCustomSignUp function, allowing for your UI to integrate with Instnt without having to change a pixel.
 
-To set up the function, enter the [following command](https://github.com/instnt-inc/instnt-react-js/blob/48d6d45d7966de5fa809f5eb6e6f0fe86ccc13de/examples/forms/src/App.js#L49):
+To set up the function, enter the [following command](https://github.com/instnt-inc/instnt-angular-js/blob/48d6d45d7966de5fa809f5eb6e6f0fe86ccc13de/examples/forms/src/App.js#L49):
 
 ```jsx
 function App () {
