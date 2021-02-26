@@ -65,7 +65,7 @@ Once the application has loaded, a fully rendered workflow will appear including
 
 # Rendering a Custom Signup Workflow with Instnt Angular SDK
 
-If you'd like to integrate Instnt's back-end functionality with your company's UI, import the [InstntSignUpModule](https://github.com/instnt-inc/instnt-angular-js/blob/master/examples/standard-form/src/app/app.module.ts#L5) in your application's module component using the following line of code:
+If you'd like to integrate Instnt's back-end functionality with your company's UI, import the [InstntSignUpModule](https://github.com/instnt-inc/instnt-angular-js/blob/master/examples/standard-form/src/app/app.module.ts#L5) in your application's module using the following line of code:
 
 ```jsx
 import { InstntSignupModule } from '@instnt/instnt-angular-js';
@@ -77,7 +77,7 @@ After that, set the [data object parameters](https://github.com/instnt-inc/instn
 
 ```jsx
 public submitMyForm(): void {
-  window.instnt.submitCustomForm(data);
+  window.instnt.submitCustomForm(this.form.value);
 };
 ```
 
@@ -93,7 +93,7 @@ To set up the html component, enter the [following line of code](https://github.
 
 ```jsx
 public submitMyForm(): void {
-  window.instnt.submitCustomForm(data);
+  window.instnt.submitCustomForm(this.form.value);
 };
 ```
 
