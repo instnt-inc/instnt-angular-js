@@ -25,10 +25,10 @@ In order to begin utilizing Instnt Angular SDK, enter the following command to i
 ```sh
 npm i @instnt/instnt-angular-js
 ```
-This process should only take a few moments. Once complete, import Instnt's Angular Workflow component:
+This process should only take a few moments. Once complete, import Instnt's Angular Workflow component in your module:
 
 ```jsx
-import { InstntSignUp } from '@instnt/instnt-angular-js'
+import { InstntSignupModule } from '@instnt/instnt-angular-js';
 ```
 InstntSignUp imports a boilerplate Instnt workflow with the following fields:
 
@@ -45,17 +45,10 @@ InstntSignUp imports a boilerplate Instnt workflow with the following fields:
 
 # Rendering a Standard Signup Workflow with Instnt Angular SDK
 
-Now that the components have been installed and imported, it's time to set up the function using the [following command](https://github.com/instnt-inc/instnt-react-js/blob/48d6d45d7966de5fa809f5eb6e6f0fe86ccc13de/examples/forms/src/App.js#L44):
+Now that the components have been installed and imported, it's time to set up the html file using the [following command](https://github.com/instnt-inc/instnt-angular-js/blob/48d6d45d7966de5fa809f5eb6e6f0fe86ccc13de/examples/forms/src/App.js#L44):
 
 ```jsx
-function App () {
-  return (
-      <div className= 'App'>
-        <instnt-signup sandbox
-         formId= 'v879876100000'></instnt-signup>
-      </div>
-    )
-  }
+<instnt-signup [sandbox]='true' [hideFormFields]='false' [formId]='v879876100000'></instnt-signup>
 ```
 Note that a Workflow ID is required in order to properly execute this function. For more information concerning Workflow IDs, please visit
 [Instnt's documentation library.](https://support.instnt.org/hc/en-us/articles/360055345112-Integration-Overview)
@@ -72,12 +65,12 @@ Once the application has loaded, a fully rendered workflow will appear including
 
 # Rendering a Custom Signup Workflow with Instnt Angular SDK
 
-If you'd like to integrate Instnt's back-end functionality with your company's UI, import the [InstntCustomSignUp](https://github.com/instnt-inc/instnt-angular-js/blob/48d6d45d7966de5fa809f5eb6e6f0fe86ccc13de/examples/forms/src/App.js#L11) workflow and set the [data object parameters](https://github.com/instnt-inc/instnt-angular-js/blob/48d6d45d7966de5fa809f5eb6e6f0fe86ccc13de/examples/forms/src/App.js#L24-L26) using the following commands:
+If you'd like to integrate Instnt's back-end functionality with your company's UI, import the [InstntCustomSignUp](https://github.com/instnt-inc/instnt-angular-js/blob/48d6d45d7966de5fa809f5eb6e6f0fe86ccc13de/examples/forms/src/App.js#L11) in your angular module and set the [data object parameters](https://github.com/instnt-inc/instnt-angular-js/blob/48d6d45d7966de5fa809f5eb6e6f0fe86ccc13de/examples/forms/src/App.js#L24-L26) using the following commands:
 
 ```jsx
-import { InstntCustomSignUp } from '@instnt/instnt-angular-js'
+import { InstntSignupModule } from '@instnt/instnt-angular-js'
 
-const submitMyForm = () -> {
+public submitMyForm(): void {
   window.instnt.submitCustomForm(data);
 };
 ```
@@ -88,21 +81,13 @@ The second command takes all of the data objects referenced throughout your sign
 To set up the function, enter the [following command](https://github.com/instnt-inc/instnt-angular-js/blob/48d6d45d7966de5fa809f5eb6e6f0fe86ccc13de/examples/forms/src/App.js#L49):
 
 ```jsx
-function App () {
-  return (
-      <div className= 'App'>
-        <instnt-custom-signup
-         sandbox
-         formId= 'v879876100000'></instnt-custom-signup>
-      </div>
-    )
-  }
+<instnt-custom-signup [sandbox]='true' [formId]='v879876100000'></instnt-custom-signup>
 ```
 
 ## Submit Workflow to Instnt Using the JavaScript Helper Function
 
 ```jsx
-const submitMyForm = () -> {
+public submitMyForm(): void {
   window.instnt.submitCustomForm(data);
 };
 ```
@@ -127,8 +112,7 @@ When submitting this data from the backend, the `instnt_token` should be collect
         'instnt_token': token
       }).pipe(map((response: any) => response))
       .subscribe((response: any) => {
-        console.log(response);
-        this.apiResponse = JSON.stringify(response.data);
+        console.log(response.data);
       });
   };
 ```
@@ -150,24 +134,26 @@ Please contact support@instnt.org for more information concerning access to the 
 
 ### What if I want to add some custom text fields onto my workflows?
 
-After setting up the InstntCustomSignUp function, simply install the following Material UI components and import the text field using the following commands:
+After setting up the InstntCustomSignUp function, simply install the following Angular Material UI components using the following commands:
 
 ```jsx
-npm install @material-ui/core
+npm i @angular/material
+```
 
-import { TextField } from '@material-ui/core'
+In your angular module component, import the following:
+
+```jsx
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 ```
 
 Once the components have been installed and imported, collect data from the user. Example:
 
 ```jsx
-  <TextField
-    id='email'
-    type='email'
-    label='Email'
-    value={data['email']}
-    onChange={onChange}
-  />
+  <mat-form-field class="example-full-width">
+    <mat-label>Email Address</mat-label>
+    <input matInput placeholder="Email Address" formControlName="email">
+  </mat-form-field>
 ```
 
 The 'email' text here is used as an example and can be anything you'd like to have appear on the workflow. Always include the value and onChange fields as written in the example above, as they mark the text field as data to be passed through the InstntCustomSignUp function.
