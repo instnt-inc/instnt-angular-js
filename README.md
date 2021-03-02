@@ -48,7 +48,7 @@ InstntSignupModule imports a boilerplate Instnt workflow with the following fiel
 Now that the components have been installed and imported, it's time to set up the html file using the [following line of code](https://github.com/instnt-inc/instnt-angular-js/blob/master/examples/standard-form/src/app/app.component.html#L307):
 
 ```jsx
-<instnt-signup [sandbox]='true' [hideFormFields]='false' [formId]='v879876100000'></instnt-signup>
+<instnt-signup [sandbox]="true" [hideFormFields]="false" [formId]="'v879876100000'"></instnt-signup>
 ```
 Note that a Workflow ID is required in order to properly execute this function. For more information concerning Workflow IDs, please visit
 [Instnt's documentation library.](https://support.instnt.org/hc/en-us/articles/360055345112-Integration-Overview)
@@ -86,7 +86,7 @@ These takes all of the data objects referenced throughout your sign-up process v
 To set up the html component, enter the [following line of code](https://github.com/instnt-inc/instnt-angular-js/blob/master/examples/standard-form/src/app/app.component.html#L312):
 
 ```jsx
-<instnt-custom-signup [sandbox]='true' [formId]='v879876100000'></instnt-custom-signup>
+<instnt-custom-signup [sandbox]="true" [formId]="'v879876100000'"></instnt-custom-signup>
 ```
 
 ## Submit Workflow to Instnt Using the JavaScript Helper Function
